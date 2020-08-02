@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  vueapp:
+    container_name: vueapp
+    hostname: vueapp
+    build:
+      context: ./vueapp
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./vueapp:/usr/vueapp
+      - /usr/front/node_modules
+    ports:
+      - '3000:3000'
+    environment:
+      - PORT=3000
+      - NODE_ENV=development

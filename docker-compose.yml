@@ -1,7 +1,18 @@
-version: '2'
+version: '3'
 
 services:
   gitlab:
     image: 'gitlab/gitlab-ce:latest'
     ports:
       - '80:80'
+
+  vueapp:
+    container_name: vueapp
+    hostname: vueapp
+    build: vueapp
+    volumes:
+      - ./vueapp:/usr/vueapp
+      - /usr/vueapp/node_modules
+    environment:
+      - PORT=80
+      - NODE_ENV=production
